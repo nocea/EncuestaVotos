@@ -13,17 +13,26 @@
     let dataListA = JSON.parse(localStorage.getItem('dataListA')) || [];
     dataListA.push(selectedValue);
     localStorage.setItem('dataListA', JSON.stringify(dataListA));
-    console.log(`Guardado valor "${selectedValue}" en la lista`);
+    console.log(`Guardado valor "${selectedValue}" en la lista de autonómicas`);
+    
   }
 
 const dataListA = JSON.parse(localStorage.getItem('dataListA')) || [];
   console.log(`Retrieved ${dataListA.length} items from local storage list`);
   console.log(dataListA);
   
+/**Funcion que elimina todo los datos del localstorage */
+function vaciarListas(){
+	localStorage.removeItem('dataListA');
+	localStorage.removeItem('dataListG');
+}  
   
 function mostrar(){
-	for (let i=0; i<dataList.length; i++)
-		console.log(dataList[i]);
+	for (let i=0; i<dataListA.length; i++)
+		console.log(dataListA[i]);
+		
+	for (let i=0; i<dataListG.length; i++)
+		console.log(dataListG[i]);
 }
 
 /**Funcion para guardar los datos las votaciones generales */
@@ -41,9 +50,14 @@ function guardarDatosG(event) {
     let dataListG = JSON.parse(localStorage.getItem('dataListG')) || [];
     dataListG.push(selectedValue);
     localStorage.setItem('dataListG', JSON.stringify(dataListG));
-    console.log(`Guardado valor "${selectedValue}" en la lista`);
+    console.log(`Guardado valor "${selectedValue}" en la lista de generales`);
   }
 
 const dataListG = JSON.parse(localStorage.getItem('dataListG')) || [];
   console.log(`Retrieved ${dataListG.length} items from local storage list`);
   console.log(dataListG);
+  
+  function mensaje(){
+	  let mensaje=document.getElementById("aviso");
+	  mensaje.innerHTML="Ha enviado el voto: ";
+  }
